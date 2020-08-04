@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}공지{% endblock %}
+{% block style %}
+<style type="text/css">
+.set {
+width:500px;
+margin:0 auto;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="set">
+{% if notice_list %}
+<ul>
+    {% for notice in notice_list %}
+    <li><a href="/notice/{{notice.id}}/">{{notice.title}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>현재 공지사항이 없습니다.</p>
+{% endif %}
+</div>
+{% endblock %}

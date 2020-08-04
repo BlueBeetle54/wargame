@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% load static %}<link rel="stylesheet" href="{% static '/dist/css/bootstrap.css' %}">
+        {% block style %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="navbar  navbar-dark fixed-top bg-dark">
+                <a class=" navbar-brand" href="/">YISF</a>
+                    {% if user.is_authenticated %}
+                <div class="mr-auto">
+                    <ul class="navbar-nav mr-auto">
+                        <li class=" nav-item">
+                            <a class="nav-link" href="/notice">공지</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/challenge">문제</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="navbar navbar-text ">login info : {{user.nick}}</h5>
+                    <a class="btn btn-danger" href="{% url 'account:signout' %}">로그아웃</a>
+                </div>
+                    {% else %}
+                <div>
+                    <a class="btn btn-danger" href="{% url 'account:signin' %}">로그인</a>
+                </div>
+                    {% endif %}
+                    {% if user.is_admin %}
+                <div class="navbar">
+                    <a class="btn btn-danger" href="/admin">관리자 페이지</a>
+                </div>
+                    {% endif %}
+
+            </nav>
+        </header>
+        <br><br><br><br>
+        {% block content %}
+        {% endblock %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script type="text/javascript" src="{% static '/dist/js/bootstrap.js' %}"></script>
+        {% block script %}{% endblock %}
+    <body>
+</html>
