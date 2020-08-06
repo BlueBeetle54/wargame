@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import *
-from django.contrib.auth.hashers import make_password, is_password_usable
+from django.contrib.auth.hashers import make_password
 
 class probAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):

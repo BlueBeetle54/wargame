@@ -11,5 +11,11 @@ class accessLogAdmin(admin.ModelAdmin):
     list_display = ('acessUser','acessProb','ipaddr', 'userAgent','onTime',)
     list_filter = ('ipaddr','acessUser',)
 
+class authLogAdmin(admin.ModelAdmin):
+    readonly_fields = ('authUser','authProb','flag','ipaddr','userAgent','onTime',)
+    list_display = ('authUser','authProb','flag','ipaddr', 'userAgent','onTime',)
+    list_filter = ('ipaddr','authUser',)
+
 admin.site.register(loginLog, loginLogAdmin)
 admin.site.register(probAcessLog, accessLogAdmin)
+admin.site.register(authLog, authLogAdmin)

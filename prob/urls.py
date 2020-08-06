@@ -7,5 +7,5 @@ app_name = 'chall'
 urlpatterns = [
    path('', views.ListProb, name='challenge'),
    path('select/', views.DetailProb, name='prob_select'),
-   #path('flag/<char:Flag>/'views.flagProb, name='flag_auth'),
+   path('flag/',views.flagProb, name='flag_auth'),
 ]

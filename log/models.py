@@ -26,6 +26,7 @@ class probAcessLog(models.Model):
 class authLog(models.Model):
     authUser = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     authProb = models.ForeignKey(prob, on_delete=models.CASCADE)
+    flag = models.CharField(max_length=300, null=True)
     ipaddr = models.GenericIPAddressField(protocol='IPv4', null=True)
     userAgent = models.CharField(max_length=500)
     is_solved = models.BooleanField(default=False)
