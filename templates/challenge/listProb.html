@@ -3,8 +3,14 @@
 {% block style %}
 <style type="text/css">
 .set {
-width:500px;
+width:750px;
 margin:0 auto;
+}
+th {
+text-align: center;
+}
+td {
+text-align: center;
 }
 .modal-score{
 padding:10px;
@@ -29,11 +35,24 @@ margin-top: 10em;
 {% block content %}
 <div class="set">
 {% if problist %}
-<ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th width="100">score</th>
+            <th width="500">title</th>
+            <th width="150">branch</th>
+        </tr>
+    </thead>
+    <tbody>
     {% for prob in problist %}
-    <li><button class="chall btn" name="{{prob.id}}">{{prob.title}}</button></li>
+        <tr>
+            <td width="100">{{prob.pscore}}</td>
+            <td width="500" class="chall btn" name="{{prob.id}}">{{prob.title}}</td>
+            <td width="150">{{prob.tag}}</td>
+        </tr>
     {% endfor %}
-</ul>
+    <tbody>
+</table>
 {% else %}
 <p>현재 공개된 문제가 없습니다.</p>
 {% endif %}

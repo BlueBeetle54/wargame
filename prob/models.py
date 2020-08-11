@@ -19,7 +19,7 @@ class prob(models.Model):
     file = models.FileField(blank=True, null=True)
     date_add = models.DateTimeField(auto_now_add=True)
     pscore = models.IntegerField()
-    #tag = models.ForeignKey('probTag', on_delete=models.CASCADE)
+    tag = models.ForeignKey('probTag', on_delete=models.CASCADE, null = True)
     flag = models.CharField(max_length=100)
     break_thru = models.IntegerField(default=0, null=False)
     is_active = models.BooleanField(default=False, null=False)

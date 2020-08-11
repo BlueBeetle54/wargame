@@ -68,6 +68,7 @@ class User(AbstractBaseUser):
         null = True,
     )
     score = models.IntegerField( default = 0 )
+    last_solved = models.DateTimeField( null = True)
     lastIP = models.GenericIPAddressField( protocol = 'IPv4', null = True )
     is_active = models.BooleanField( default = True )
     is_admin = models.BooleanField( default = False )

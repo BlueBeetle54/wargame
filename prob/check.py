@@ -1,6 +1,7 @@
 from .models import *
 from log.models import authLog
 from account.models import User
+import datetime
 
 
 
@@ -44,6 +45,7 @@ def scoring(request, prob):
         if not prob in logCheck(request.user):
             userinfo = User.objects.get(uid=request.user)
             userinfo.score += prob.pscore
+            userinfo.last_solved = datetime.datetime.now()
             if prob.break_thru:
                 userinfo.score += prob.break_thru
                 prob.break_thru -= 1
