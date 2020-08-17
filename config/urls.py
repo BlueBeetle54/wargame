@@ -18,13 +18,20 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from datetime import datetime
 from backend import views as indexView
-
-urlpatterns = [
-    path('', indexView.index, name = 'index'),
-    path('admin/', admin.site.urls),
-    path('notice/', include('notice.urls')),
-    path('account/', include('account.urls')),
-    path('challenge/', include('prob.urls')),
-    ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-
+from rank import views as rankView
+if settings.STARTING < datetime.now() < settings.ENDING:
+    urlpatterns = [
+        path('', indexView.index, name = 'index'),
+        path('admin/', admin.site.urls),
+        path('notice/', include('notice.urls')),
+        path('account/', include('account.urls')),
+        path('challenge/', include('prob.urls')),
+        path('rank/', rankView.ListRank, name = 'rank'),
+        ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+else:
+    urlpatterns = [
+        path('', indexView.beforeStart, name = 'index'),
+        path('admin/', admin.site.urls),
+    ]

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,10 +31,13 @@ ALLOWED_HOSTS = [
     "192.168.200.254",
 ]
 
+STARTING = datetime.datetime(2020, 8, 17, 17, 10, 0, 0)
+ENDING = datetime.datetime(2021, 8, 17, 11, 10, 0, 0)
 
 AUTH_USER_MODEL = 'account.User'
 LOGIN_URL = 'account/signin'
-#SESSION_COOKIE_AGE =1800
+#SESSION_COOKIE_AGE = 1800
+#CSRF_COOKIE_AGE = 600
 
 
 # Application definition
@@ -49,6 +53,7 @@ INSTALLED_APPS = [
     'notice',
     'prob',
     'log',
+    'rank',
 ]
 
 MIDDLEWARE = [

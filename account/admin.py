@@ -9,7 +9,8 @@ class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
     
-    list_display = ('uid', 'nick', 'lastIP', 'last_solved', 'score')
+    readonly_fields = ('score',)
+    list_display = ('uid', 'nick', 'last_login', 'lastIP', 'last_solved', 'score')
     list_filter = ()
 
     fieldsets = (
@@ -40,5 +41,6 @@ class MstSessionAdmin(admin.ModelAdmin):
     filter_horizontal = ()
 
 admin.site.register(User, UserAdmin)
+#admin.site.register(User)
 admin.site.register(UserSession, MstSessionAdmin)
 admin.site.unregister(Group)

@@ -27,6 +27,9 @@ class prob(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def pretty_name(self):
+        return "{0}.{1}".format(slugify(self.title),get_extension(self.file.name))
 
 class probTag(models.Model):
     title = models.CharField(max_length=150)

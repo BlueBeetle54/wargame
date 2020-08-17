@@ -5,7 +5,19 @@
         <title>{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% load static %}<link rel="stylesheet" href="{% static '/dist/css/bootstrap.css' %}">
+        <style type="text/css">
+        .btn-nav{
+        padding:0 10px;
+        }
+        .nav-item{
+        margin-left:30px;
+        }
+        .nav-tabs{
+        border-bottom:none;
+        margin:auto 0;
+        }
         {% block style %}{% endblock %}
+        </style>
     </head>
     <body>
         <header>
@@ -13,12 +25,15 @@
                 <a class=" navbar-brand" href="/">YISF</a>
                     {% if user.is_authenticated %}
                 <div class="mr-auto">
-                    <ul class="navbar-nav mr-auto">
-                        <li class=" nav-item">
-                            <a class="nav-link" href="/notice">공지</a>
+                    <ul class="nav-tabs navbar">
+                        <li class="navbar-nav nav-item">
+                            <a class="nav-link btn btn-nav" href="/notice">공지</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/challenge">문제</a>
+                        <li class="navbar-nav nav-item">
+                            <a class="nav-link btn btn-nav" href="/challenge">문제</a>
+                        </li>
+                        <li class="navbar-nav nav-item">
+                            <a class="nav-link btn btn-nav" href="/rank">순위</a>
                         </li>
                     </ul>
                 </div>

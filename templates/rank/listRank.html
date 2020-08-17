@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}순위{% endblock %}
+{% block style %}
+.setRank {
+width:1200px;
+margin:0 auto;
+}
+th {
+text-align: center;
+}
+td {
+text-align: center;
+}
+{% endblock %}
+{% block content %}
+<div class="setRank">
+{% if rank_list %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="150">#</th>
+                <th width="500">nick</th>
+                <th width="200">score</th>
+                <th width="350">last solved</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for user in rank_list %}
+    {% if not user.is_admin %}
+            <tr>
+                <th width="150">{{ forloop.counter }}</th>
+                <th width="500">{{user.nick}}</th>
+                <th width="200">{{user.score}}</th>
+                <th width="350">{{user.last_solved}}</th>
+            </tr>
+    {% endif %}
+    {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>유저 없음</p>
+{% endif %}
+</div>
+{% endblock %}
